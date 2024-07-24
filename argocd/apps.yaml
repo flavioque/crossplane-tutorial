@@ -4,12 +4,16 @@ kind: Application
 metadata:
   name: a-team
   namespace: argocd
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/vfarcic/crossplane-tutorial
+    repoURL: https://github.com/flavioque/crossplane-tutorial.git
     targetRevision: HEAD
     path: a-team
   destination:
