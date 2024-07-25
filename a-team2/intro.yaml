@@ -2,9 +2,9 @@
 apiVersion: devopstoolkitseries.com/v1alpha1
 kind: ClusterClaim
 metadata:
-  name: cluster-02
+  name: cluster-01
 spec:
-  id: cluster-02
+  id: cluster-01
   compositionSelector:
     matchLabels:
       provider: aws
@@ -16,16 +16,16 @@ spec:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: silly-demo-db-password2
+  name: silly-demo-db-password
 data:
   password: cG9zdGdyZXM=
 ---
 apiVersion: devopstoolkitseries.com/v1alpha1
 kind: SQLClaim
 metadata:
-  name: silly-demo-db2
+  name: silly-demo-db
 spec:
-  id: silly-demo-db2
+  id: silly-demo-db
   compositionSelector:
     matchLabels:
       provider: aws
@@ -34,14 +34,14 @@ spec:
     version: "13"
     size: small
     databases:
-      - silly-demo-db2
+      - silly-demo-db
 ---
 apiVersion: devopstoolkitseries.com/v1alpha1
 kind: AppClaim
 metadata:
-  name: silly-demo2
+  name: silly-demo
 spec:
-  id: silly-demo2
+  id: silly-demo
   compositionSelector:
     matchLabels:
       type: backend-db
@@ -52,6 +52,6 @@ spec:
     port: 8080
     host: silly-demo.acme.com
     dbSecret:
-      name: silly-demo-db2
-      namespace: a-team2
-    kubernetesProviderConfigName: cluster-02
+      name: silly-demo-db
+      namespace: a-team
+    kubernetesProviderConfigName: cluster-01
