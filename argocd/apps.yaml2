@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: a-team2
+  name: a-team
   namespace: argocd
   annotations:
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
@@ -15,10 +15,10 @@ spec:
   source:
     repoURL: https://github.com/flavioque/crossplane-tutorial.git
     targetRevision: HEAD
-    path: a-team2
+    path: a-team
   destination:
     server: https://kubernetes.default.svc
-    namespace: a-team2
+    namespace: a-team
   syncPolicy:
     automated:
       selfHeal: true
