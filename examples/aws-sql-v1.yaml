@@ -5,7 +5,7 @@ metadata:
   name: my-db-password
   namespace: crossplane-system
 data:
-  password: cG9zdGdyZXM=
+  password: mcsd2000
 ---
 apiVersion: devopstoolkitseries.com/v1alpha1
 kind: SQL
